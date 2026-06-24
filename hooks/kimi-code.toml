@@ -1,0 +1,18 @@
+# Kimi Code hook configuration for secret-bridge
+#
+# Add these entries to ~/.kimi-code/config.toml, then run /reload
+#
+# These hooks are project-level. In projects without .secret-bridge/,
+# the hook script will not be found and will fail-open (no block).
+# This is expected behavior.
+
+[[hooks]]
+event = "UserPromptSubmit"
+command = "node .secret-bridge/block-secret-leak.mjs user-prompt"
+timeout = 5
+
+[[hooks]]
+event = "PreToolUse"
+matcher = "Bash"
+command = "node .secret-bridge/block-secret-leak.mjs pre-tool-use"
+timeout = 5

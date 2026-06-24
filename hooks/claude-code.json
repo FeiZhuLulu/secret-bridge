@@ -1,0 +1,17 @@
+{
+  "_comment": "Claude Code hook configuration for secret-bridge. Merge into .claude/settings.json under the 'hooks' key.",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "node .secret-bridge/block-secret-leak.mjs pre-tool-use",
+            "timeout": 5
+          }
+        ]
+      }
+    ]
+  }
+}
